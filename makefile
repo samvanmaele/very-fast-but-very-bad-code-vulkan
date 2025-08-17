@@ -6,10 +6,10 @@ TARGET_RELEASE = $(OUTPUT_RELEASE)/vulkan
 TARGET_DEBUG   = $(OUTPUT_DEBUG)/vulkan
 
 # Assume Vulkan SDK and SDL2 are installed via pacman
-CXXFLAGS_RELEASE = -O3 -Wall -DNDEBUG -I./src -DSDL_MAIN_HANDLED -std=c++23
+CXXFLAGS_RELEASE = -O3 -Wall -DNDEBUG -I./src -DSDL_MAIN_HANDLED -std=c++23 -march=native -flto -fomit-frame-pointer -fno-rtti -fno-exceptions -fprofile-use=code.profdata
 CXXFLAGS_DEBUG   = -O0 -g3 -Wall -I./src -DSDL_MAIN_HANDLED -std=c++23
 
-LDFLAGS = -fuse-ld=lld -lvulkan -lSDL2
+LDFLAGS = -fuse-ld=lld -lvulkan -lvolk -lSDL2
 
 OBJS_COMMON = main.o vk_frames.o vk_command.o vk_device.o vk_sync.o
 OBJS_DEBUG  = vk_debug.o

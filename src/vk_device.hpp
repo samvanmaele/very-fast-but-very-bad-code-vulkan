@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL2/SDL_video.h>
-#include <vulkan/vulkan.h>
+#include <volk.h>
 #include <vector>
 
 #include "common_structs.hpp"
