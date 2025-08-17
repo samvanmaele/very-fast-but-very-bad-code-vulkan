@@ -358,7 +358,7 @@ VkExtent2D FrameManager::chooseSwapExtent(SDL_Window* window, const VkSurfaceCap
     else
     {
         int width, height;
-        SDL_Vulkan_GetDrawableSize(window, &width, &height);
+        SDL_GetWindowSize(window, &width, &height);
         VkExtent2D actualExtent = {static_cast<uint32_t>(width), static_cast<uint32_t>(height)};
 
         actualExtent.width = std::clamp(actualExtent.width, capabilities.minImageExtent.width, capabilities.maxImageExtent.width);

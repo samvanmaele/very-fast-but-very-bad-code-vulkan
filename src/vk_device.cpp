@@ -46,7 +46,13 @@ std::vector<const char*> DeviceManager::getRequiredExtensions(bool enableValidat
 {
     Uint32 sdlExtensionCount = 0;
     const char* const* sdlExtensions = SDL_Vulkan_GetInstanceExtensions(&sdlExtensionCount);
-    std::vector<const char*> extensions; sdlExtensions
+
+    std::vector<const char*> extensions;
+    for (Uint32 i = 0; i < sdlExtensionCount; ++i)
+    {
+        extensions.push_back(sdlExtensions[i]);
+    }
+
     if (enableValidationLayers) extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 
     return extensions;

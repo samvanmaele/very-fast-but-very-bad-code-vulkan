@@ -6,10 +6,16 @@ TARGET_RELEASE = $(OUTPUT_RELEASE)/vulkan
 TARGET_DEBUG   = $(OUTPUT_DEBUG)/vulkan
 
 # Assume Vulkan SDK and SDL3 are installed via pacman
-CXXFLAGS_RELEASE = -O3 -Wall -DNDEBUG -I./src -DSDL_MAIN_HANDLED -std=c++23 -march=native -flto -fomit-frame-pointer -fno-rtti -fno-exceptions -fprofile-use=code.profdata
+CXXFLAGS_RELEASE = -O3 -Wall -DNDEBUG -I./src -DSDL_MAIN_HANDLED -std=c++23 -march=native -flto -fomit-frame-pointer -fno-rtti -fno-exceptions -ffast-math
 CXXFLAGS_DEBUG   = -O0 -g3 -Wall -I./src -DSDL_MAIN_HANDLED -std=c++23
 
-LDFLAGS = -fuse-ld=lld -lvulkan -lvolk -lSDL3
+SDL2_STATIC = /usr/local/lib/libSDL3.a
+
+VOLK_OBJ = $(OUTPUT_RELEASE)/volk.o
+$(OUTPUT_RELEASE)/volk.o: ./src/volk.c
+	$(CXX) -x c -O3 -Wall -march=native -flto -fomit-frame-pointer -c $< -o $@
+
+LDFLAGS = -fuse-ld=lld -static-libstdc++ -static-libgcc -lvulkan -ldl -lpthread -lm $(SDL2_STATIC)
 
 OBJS_COMMON = main.o vk_frames.o vk_command.o vk_device.o vk_sync.o
 OBJS_DEBUG  = vk_debug.o
@@ -21,16 +27,16 @@ all: $(TARGET_RELEASE)
 debug: $(TARGET_DEBUG)
 emcc: $(OUTPUT_WEB)/main.html
 
-$(TARGET_RELEASE): $(addprefix $(OUTPUT_RELEASE)/,$(OBJS_COMMON))
+$(TARGET_RELEASE): $(addprefix $(OUTPUT_RELEASE)/,$(OBJS_COMMON)) $(VOLK_OBJ)
 	$(CXX) $(CXXFLAGS_RELEASE) -o $@ $^ $(LDFLAGS)
 
-$(TARGET_DEBUG): $(addprefix $(OUTPUT_DEBUG)/,$(OBJS_COMMON) $(OBJS_DEBUG))
+$(TARGET_DEBUG): $(addprefix $(OUTPUT_DEBUG)/,$(OBJS_COMMON) $(OBJS_DEBUG)) $(VOLK_OBJ)
 	$(CXX) $(CXXFLAGS_DEBUG) -o $@ $^ $(LDFLAGS)
 
-$(OUTPUT_RELEASE)/%.o: $(SRC_DIR)/%.cpp | $(OUTPUT_RELEASE)
+$(OUTPUT_RELEASE)/%.o: $(SRC_DIR)/%.cpp | $(OUTPUT_RELEASE) $(VOLK_OBJ)
 	$(CXX) $(CXXFLAGS_RELEASE) -c $< -o $@
 
-$(OUTPUT_DEBUG)/%.o: $(SRC_DIR)/%.cpp | $(OUTPUT_DEBUG)
+$(OUTPUT_DEBUG)/%.o: $(SRC_DIR)/%.cpp | $(OUTPUT_DEBUG) $(VOLK_OBJ)
 	$(CXX) $(CXXFLAGS_DEBUG) -c $< -o $@
 
 $(OUTPUT_RELEASE) $(OUTPUT_DEBUG):

@@ -1,4 +1,3 @@
-#define VOLK_IMPLEMENTATION
 #include <volk.h>
 #include <SDL3/SDL_vulkan.h>
 #include <SDL3/SDL_video.h>
@@ -68,9 +67,9 @@ class Triangle
             SDL_Init(SDL_INIT_VIDEO);
 
             #ifdef __EMSCRIPTEN__
-                window = SDL_CreateWindow("...", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE);
+                window = SDL_CreateWindow("...", WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE);
             #else
-                window = SDL_CreateWindow("...", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE);
+                window = SDL_CreateWindow("...", WIDTH, HEIGHT, SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE);
             #endif
         }
 
