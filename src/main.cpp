@@ -1,8 +1,9 @@
+#define VOLK_IMPLEMENTATION
 #include <volk.h>
-#include <SDL2/SDL_vulkan.h>
-#include <SDL2/SDL_video.h>
+#include <SDL3/SDL_vulkan.h>
+#include <SDL3/SDL_video.h>
 //#include <stdexcept>
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 #include <cstdlib>
 #include <thread>
@@ -55,7 +56,6 @@ class Triangle
 
     private:
         SDL_Window* window;
-        uint32_t currentFrame = 0;
 
         DebugManager debugManager;
         DeviceManager deviceManager;
@@ -176,7 +176,7 @@ class Triangle
                     {
                         switch (event.type)
                         {
-                            case SDL_QUIT:
+                            case SDL_EVENT_QUIT:
                                 running = false;
                                 break;
                             /*case SDL_WINDOWEVENT:
@@ -236,6 +236,7 @@ class Triangle
                 signalInfo.stageMask = VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT;
 
                 uint32_t imageIndex;
+                uint32_t currentFrame = 0;
 
                 VkPresentInfoKHR presentInfo =
                 {

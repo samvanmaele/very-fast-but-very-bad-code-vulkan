@@ -1,7 +1,7 @@
 #include "vk_frames.hpp"
 #include "common_structs.hpp"
-#include <SDL2/SDL_video.h>
-#include <SDL2/SDL_vulkan.h>
+#include <SDL3/SDL_video.h>
+#include <SDL3/SDL_vulkan.h>
 #include <algorithm>
 #include <cstdint>
 #include <iostream>
