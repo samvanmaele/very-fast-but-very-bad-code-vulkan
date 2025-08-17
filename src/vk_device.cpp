@@ -4,6 +4,7 @@
 #include <map>
 #include <ostream>
 #include <set>
+#include <vector>
 #include <vulkan/vulkan_core.h>
 //#include <stdexcept>
 
@@ -39,16 +40,13 @@ void DeviceManager::createInstance(SDL_Window* window, bool enableValidationLaye
 
     //if (
     vkCreateInstance(&createInfo, nullptr, &instance);// != VK_SUCCESS) throw std::runtime_error("failed to create instance!");
-    SDL_Vulkan_CreateSurface(window, instance, &surface);
+    SDL_Vulkan_CreateSurface(window, instance, nullptr, &surface);
 }
 std::vector<const char*> DeviceManager::getRequiredExtensions(bool enableValidationLayers, SDL_Window* window)
 {
-    uint32_t sdlExtensionCount = 0;
-
-    SDL_Vulkan_GetInstanceExtensions(window, &sdlExtensionCount, nullptr);
-    std::vector<const char*> extensions(sdlExtensionCount);
-    SDL_Vulkan_GetInstanceExtensions(window, &sdlExtensionCount, extensions.data());
-
+    Uint32 sdlExtensionCount = 0;
+    const char* const* sdlExtensions = SDL_Vulkan_GetInstanceExtensions(&sdlExtensionCount);
+    std::vector<const char*> extensions; sdlExtensions
     if (enableValidationLayers) extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 
     return extensions;
