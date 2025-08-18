@@ -22,8 +22,9 @@
 | 2.| Vanyilla  |  86370 | Windows 11    | 9950X            | RTX 4090                 |
 | 3.| Adesi     |  74199 | Windows ??    | 5950X            | RTX 4080                 |
 | 4.| Sam       |  72349 | Windows 11    | 5950X            | RTX 3090                 | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
-| 5.| Caibi     |  62000 | Windows ??    | 14700F           | RTX 4060                 |
-| 5.| Quack     |  32725 | Windows 10    | TR 3990X 64 core | 2x TITAN V + K80 24GB    | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
+| 5.| toast     |  66000 | Windows 11    | 5900X            | RTX 5070 TI              |
+| 6.| Caibi     |  62000 | Windows ??    | 14700F           | RTX 4060                 |
+| 7.| Quack     |  32725 | Windows 10    | TR 3990X 64 core | 2x TITAN V + K80 24GB    | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
 
 # Leaderboard (MacOS)
 

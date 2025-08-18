@@ -81,7 +81,7 @@ class Triangle
                 HANDLE hThread = GetCurrentThread();
                 SetThreadAffinityMask(hThread, 1 << 2);
                 SetThreadPriority(hThread, THREAD_PRIORITY_HIGHEST);
-            #else
+            #elif __linux__
                 cpu_set_t cpuset;
                 CPU_ZERO(&cpuset);
                 const int core_id = 2;
@@ -139,7 +139,7 @@ class Triangle
                     HANDLE hThread = GetCurrentThread();
                     SetThreadAffinityMask(hThread, 1 << 2);
                     SetThreadPriority(hThread, THREAD_PRIORITY_HIGHEST);
-                #else
+                #elif __linux__
                     cpu_set_t cpuset;
                     CPU_ZERO(&cpuset);
                     const int core_id = 2;
