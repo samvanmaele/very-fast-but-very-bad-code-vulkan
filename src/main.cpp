@@ -89,7 +89,6 @@ class Triangle
             volkLoadInstance(deviceManager.instance);
             //if (enableValidationLayers) debugManager.setupDebugMessenger(deviceManager.instance);
 
-            std::cout << USE_IGPU << std::endl;
             if (!deviceManager.checkPhysicalDevice(USE_IGPU) || forceOpenGL)
             {
                 return false;
