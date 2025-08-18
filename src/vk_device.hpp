@@ -17,8 +17,8 @@ class DeviceManager
         QueueFamilyIndices indices;
 
         void createInstance(SDL_Window* window, bool enableValidationLayers, std::vector<const char*> validationLayers, VkDebugUtilsMessengerCreateInfoEXT &debugCreateInfo);
-        bool checkPhysicalDevice();
-        int rateDeviceSuitability(VkPhysicalDevice physicalDevice);
+        bool checkPhysicalDevice(bool USE_IGPU);
+        int rateDeviceSuitability(VkPhysicalDevice physicalDevice, bool USE_IGPU);
         SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice physicalDevice);
         bool checkDeviceExtensionSupport(VkPhysicalDevice physicalDevice);
         QueueFamilyIndices findQueueFamilies(VkPhysicalDevice physicalDevice);

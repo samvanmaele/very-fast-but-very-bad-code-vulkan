@@ -61,7 +61,7 @@ $(OUTPUT_WEB):
 	mkdir -p $@
 
 run: $(TARGET_RELEASE)
-	./$(TARGET_RELEASE)
+	./$(TARGET_RELEASE) $(ARGS)
 
 run-debug: $(TARGET_DEBUG)
 	./$(TARGET_DEBUG)

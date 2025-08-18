@@ -1,3 +1,5 @@
+bool USE_IGPU = false;
+
 #include <volk.h>
 #include <SDL3/SDL_vulkan.h>
 #include <SDL3/SDL_video.h>
@@ -10,6 +12,7 @@
 #include <vector>
 #include <cstdint>
 #include <atomic>
+#include <iostream>
 
 #include "common_structs.hpp"
 #include "vk_debug.hpp"
@@ -86,7 +89,8 @@ class Triangle
             volkLoadInstance(deviceManager.instance);
             //if (enableValidationLayers) debugManager.setupDebugMessenger(deviceManager.instance);
 
-            if (!deviceManager.checkPhysicalDevice() || forceOpenGL)
+            std::cout << USE_IGPU << std::endl;
+            if (!deviceManager.checkPhysicalDevice(USE_IGPU) || forceOpenGL)
             {
                 return false;
             }
@@ -142,68 +146,63 @@ class Triangle
         //std::atomic<bool> resized = false;
         alignas(64) uint64_t frameCount = 0;
         std::thread renderThread;
-        std::thread windowThread;
 
         void mainLoop()
         {
             createRenderthread();
 
-            windowThread = std::thread([this]()
+            cpu_set_t cpuset;
+            CPU_ZERO(&cpuset);
+            const int core_id = 2;
+            CPU_SET(core_id, &cpuset);
+
+            const pthread_t thread = pthread_self();
+            pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
+
+            sched_param sch_params;
+            sch_params.sched_priority = sched_get_priority_max(SCHED_BATCH);
+            pthread_setschedparam(thread, SCHED_BATCH, &sch_params);
+
+            Uint32 lastTime = SDL_GetTicks();
+            char titleBuffer[64];
+
+            const int targetFPS = 20;
+            const int frameDelay = 1000 / targetFPS;
+
+            while (running)
             {
-                cpu_set_t cpuset;
-                CPU_ZERO(&cpuset);
-                const int core_id = 2;
-                CPU_SET(core_id, &cpuset);
-
-                const pthread_t thread = pthread_self();
-                pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
-
-                sched_param sch_params;
-                sch_params.sched_priority = sched_get_priority_max(SCHED_BATCH);
-                pthread_setschedparam(thread, SCHED_BATCH, &sch_params);
-
-                Uint32 lastTime = SDL_GetTicks();
-                char titleBuffer[64];
-
-                const int targetFPS = 20;
-                const int frameDelay = 1000 / targetFPS;
-
-                while (running)
+                SDL_Event event;
+                while (SDL_PollEvent(&event))
                 {
-                    SDL_Event event;
-                    while (SDL_PollEvent(&event))
+                    switch (event.type)
                     {
-                        switch (event.type)
-                        {
-                            case SDL_EVENT_QUIT:
-                                running = false;
-                                break;
-                            /*case SDL_WINDOWEVENT:
-                                if (event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
-                                {
-                                    resized = true;
-                                }
-                                break;*/
-                        }
+                        case SDL_EVENT_QUIT:
+                            running = false;
+                            break;
+                        /*case SDL_WINDOWEVENT:
+                            if (event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
+                            {
+                                resized = true;
+                            }
+                            break;*/
                     }
-
-                    Uint32 currentTime = SDL_GetTicks();
-                    Uint32 frametime = currentTime - lastTime;
-
-                    if (frametime >= 1000)
-                    {
-                        float fps = 1000.0f * (float)frameCount / (float)frametime;
-
-                        std::snprintf(titleBuffer, 64, "FPS: %f", fps);
-                        SDL_SetWindowTitle(window, titleBuffer);
-                        lastTime = currentTime;
-                        frameCount = 0u;
-                    }
-                    SDL_Delay(frameDelay);
                 }
-            });
 
-            windowThread.join();
+                Uint32 currentTime = SDL_GetTicks();
+                Uint32 frametime = currentTime - lastTime;
+
+                if (frametime >= 1000)
+                {
+                    float fps = 1000.0f * (float)frameCount / (float)frametime;
+
+                    std::snprintf(titleBuffer, 64, "FPS: %f", fps);
+                    SDL_SetWindowTitle(window, titleBuffer);
+                    lastTime = currentTime;
+                    frameCount = 0u;
+                }
+                SDL_Delay(frameDelay);
+            }
+
             renderThread.join();
         }
         void createRenderthread()
@@ -335,6 +334,19 @@ class Triangle
 
 int main(int argc, char* argv[])
 {
+    for (int i = 1; i < argc; i++)
+    {
+        std::string arg = argv[i];
+        if (arg == "--use-igpu")
+        {
+            USE_IGPU = true;
+        }
+        else
+        {
+            USE_IGPU = false;
+        }
+    }
+
     Triangle app;
     return EXIT_SUCCESS;
 }
