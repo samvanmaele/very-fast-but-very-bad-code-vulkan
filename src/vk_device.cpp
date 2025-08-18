@@ -106,6 +106,7 @@ int DeviceManager::rateDeviceSuitability(VkPhysicalDevice physicalDevice)
     vkGetPhysicalDeviceFeatures(physicalDevice, &deviceFeatures);
 
     if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) score += 1000;
+    if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU) score += 2000;
     score += deviceProperties.limits.maxImageDimension2D;
 
     return score;
