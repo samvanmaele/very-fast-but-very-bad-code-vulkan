@@ -77,7 +77,7 @@ class Triangle
         {
             createRenderthread();
 
-            #ifdef WIN32
+            #ifdef _WIN32
                 HANDLE hThread = GetCurrentThread();
                 SetThreadAffinityMask(hThread, 1 << 2);
                 SetThreadPriority(hThread, THREAD_PRIORITY_HIGHEST);
@@ -135,7 +135,7 @@ class Triangle
         {
             renderThread = std::thread([this]()
             {
-                #ifdef WIN32
+                #ifdef _WIN32
                     HANDLE hThread = GetCurrentThread();
                     SetThreadAffinityMask(hThread, 1 << 2);
                     SetThreadPriority(hThread, THREAD_PRIORITY_HIGHEST);
