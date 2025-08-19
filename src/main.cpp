@@ -1,13 +1,20 @@
 bool USE_IGPU = false;
 
+#ifdef _WIN32
+    #define WIN32_LEAN_AND_MEAN
+    #include <windows.h>
+#elif __linux__
+    #include <sched.h>
+#endif
+
+#include <thread>
+
 #include <volk.h>
 #include <SDL3/SDL_vulkan.h>
 #include <SDL3/SDL_video.h>
 #include <SDL3/SDL.h>
 
 #include <cstdlib>
-#include <thread>
-#include <sched.h>
 #include <vector>
 #include <cstdint>
 #include <atomic>
@@ -70,17 +77,23 @@ class Triangle
         {
             createRenderthread();
 
-            cpu_set_t cpuset;
-            CPU_ZERO(&cpuset);
-            const int core_id = 2;
-            CPU_SET(core_id, &cpuset);
+            #ifdef WIN32
+                HANDLE hThread = GetCurrentThread();
+                SetThreadAffinityMask(hThread, 1 << 2);
+                SetThreadPriority(hThread, THREAD_PRIORITY_HIGHEST);
+            #else
+                cpu_set_t cpuset;
+                CPU_ZERO(&cpuset);
+                const int core_id = 2;
+                CPU_SET(core_id, &cpuset);
 
-            const pthread_t thread = pthread_self();
-            pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
+                const pthread_t thread = pthread_self();
+                pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
 
-            sched_param sch_params;
-            sch_params.sched_priority = sched_get_priority_max(SCHED_BATCH);
-            pthread_setschedparam(thread, SCHED_BATCH, &sch_params);
+                sched_param sch_params;
+                sch_params.sched_priority = sched_get_priority_max(SCHED_BATCH);
+                pthread_setschedparam(thread, SCHED_BATCH, &sch_params);
+            #endif
 
             Uint32 lastTime = SDL_GetTicks();
             char titleBuffer[64];
@@ -122,17 +135,23 @@ class Triangle
         {
             renderThread = std::thread([this]()
             {
-                cpu_set_t cpuset;
-                CPU_ZERO(&cpuset);
-                const int core_id = 1;
-                CPU_SET(core_id, &cpuset);
+                #ifdef WIN32
+                    HANDLE hThread = GetCurrentThread();
+                    SetThreadAffinityMask(hThread, 1 << 2);
+                    SetThreadPriority(hThread, THREAD_PRIORITY_HIGHEST);
+                #else
+                    cpu_set_t cpuset;
+                    CPU_ZERO(&cpuset);
+                    const int core_id = 2;
+                    CPU_SET(core_id, &cpuset);
 
-                const pthread_t thread = pthread_self();
-                pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
+                    const pthread_t thread = pthread_self();
+                    pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
 
-                sched_param sch_params;
-                sch_params.sched_priority = sched_get_priority_max(SCHED_FIFO);
-                pthread_setschedparam(thread, SCHED_FIFO, &sch_params);
+                    sched_param sch_params;
+                    sch_params.sched_priority = sched_get_priority_max(SCHED_BATCH);
+                    pthread_setschedparam(thread, SCHED_BATCH, &sch_params);
+                #endif
 
                 const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
                 VkSemaphore signalSemaphores[1];
@@ -211,10 +230,6 @@ class Triangle
             vkDestroyCommandPool(deviceManager.device, commandManager.commandPool, nullptr);
             vkDestroyDevice(deviceManager.device, nullptr);
 
-            cleanInstance();
-        }
-        void cleanInstance()
-        {
             vkDestroySurfaceKHR(deviceManager.instance, deviceManager.surface, nullptr);
             vkDestroyInstance(deviceManager.instance, nullptr);
 
