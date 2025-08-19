@@ -18,7 +18,6 @@ bool USE_IGPU = false;
 #include <vector>
 #include <cstdint>
 #include <atomic>
-#include <iostream>
 
 #include "common_structs.hpp"
 #include "vk_device.hpp"
@@ -194,7 +193,7 @@ class Triangle
                     //VkFence &fence = syncManager.inFlightFences[currentFrame];
                     //vkWaitForFences(deviceManager.device, 1, &fence, VK_TRUE, UINT64_MAX);
 
-                    VkResult result = vkAcquireNextImageKHR(deviceManager.device, frameManager.swapChain, UINT64_MAX, syncManager.imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &imageIndex);
+                    vkAcquireNextImageKHR(deviceManager.device, frameManager.swapChain, UINT64_MAX, syncManager.imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &imageIndex);
 
                     //vkResetFences(deviceManager.device, 1, &fence);
 
@@ -207,7 +206,7 @@ class Triangle
                     presentInfo.pWaitSemaphores = signalSemaphores;
                     presentInfo.pImageIndices = &imageIndex;
 
-                    result = vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo);
+                    vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo);
 
                     currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
                     frameCount++;
