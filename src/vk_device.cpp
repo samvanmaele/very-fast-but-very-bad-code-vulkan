@@ -6,9 +6,8 @@
 #include <set>
 #include <vector>
 #include <vulkan/vulkan_core.h>
-//#include <stdexcept>
 
-void DeviceManager::createInstance(SDL_Window* window, bool enableValidationLayers, std::vector<const char*> validationLayers, VkDebugUtilsMessengerCreateInfoEXT &debugCreateInfo)
+void DeviceManager::createInstance(SDL_Window* window)
 {
     VkApplicationInfo appInfo{};
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -18,7 +17,7 @@ void DeviceManager::createInstance(SDL_Window* window, bool enableValidationLaye
     appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
     appInfo.apiVersion = VK_API_VERSION_1_3;
 
-    auto extensions = getRequiredExtensions(enableValidationLayers, window);
+    auto extensions = getRequiredExtensions(window);
 
     VkInstanceCreateInfo createInfo{};
     createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
@@ -26,23 +25,13 @@ void DeviceManager::createInstance(SDL_Window* window, bool enableValidationLaye
     createInfo.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
     createInfo.ppEnabledExtensionNames = extensions.data();
 
-    if (enableValidationLayers)
-    {
-        createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
-        createInfo.ppEnabledLayerNames = validationLayers.data();
-        createInfo.pNext = (VkDebugUtilsMessengerCreateInfoEXT*) &debugCreateInfo;
-    }
-    else
-    {
-        createInfo.enabledLayerCount = 0;
-        createInfo.pNext = nullptr;
-    }
+    createInfo.enabledLayerCount = 0;
+    createInfo.pNext = nullptr;
 
-    //if (
-    vkCreateInstance(&createInfo, nullptr, &instance);// != VK_SUCCESS) throw std::runtime_error("failed to create instance!");
+    vkCreateInstance(&createInfo, nullptr, &instance);
     SDL_Vulkan_CreateSurface(window, instance, nullptr, &surface);
 }
-std::vector<const char*> DeviceManager::getRequiredExtensions(bool enableValidationLayers, SDL_Window* window)
+std::vector<const char*> DeviceManager::getRequiredExtensions(SDL_Window* window)
 {
     Uint32 sdlExtensionCount = 0;
     const char* const* sdlExtensions = SDL_Vulkan_GetInstanceExtensions(&sdlExtensionCount);
@@ -52,8 +41,6 @@ std::vector<const char*> DeviceManager::getRequiredExtensions(bool enableValidat
     {
         extensions.push_back(sdlExtensions[i]);
     }
-
-    if (enableValidationLayers) extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
 
     return extensions;
 }
@@ -76,7 +63,6 @@ bool DeviceManager::checkPhysicalDevice(bool USE_IGPU)
     }
 
     if (candidates.rbegin()->first > 0) physicalDevice = candidates.rbegin()->second;
-    //else throw std::runtime_error("failed to find a suitable GPU!");
 
     VkPhysicalDeviceProperties props;
     vkGetPhysicalDeviceProperties(physicalDevice, &props);
@@ -181,7 +167,7 @@ QueueFamilyIndices DeviceManager::findQueueFamilies(VkPhysicalDevice physicalDev
     return indices;
 }
 
-void DeviceManager::createLogicalDevice(QueueFamilyIndices &indices, bool enableValidationLayers, std::vector<const char*> validationLayers)
+void DeviceManager::createLogicalDevice(QueueFamilyIndices &indices)
 {
     std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
     std::set<uint32_t> uniqueQueueFamilies = {indices.graphicsFamily.value(), indices.presentFamily.value()};
@@ -211,19 +197,9 @@ void DeviceManager::createLogicalDevice(QueueFamilyIndices &indices, bool enable
 
     createInfo.enabledExtensionCount = static_cast<uint32_t>(deviceExtensions.size());
     createInfo.ppEnabledExtensionNames = deviceExtensions.data();
+    createInfo.enabledLayerCount = 0;
 
-    if (enableValidationLayers)
-    {
-        createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
-        createInfo.ppEnabledLayerNames = validationLayers.data();
-    }
-    else
-    {
-        createInfo.enabledLayerCount = 0;
-    }
-
-    //if (
-    vkCreateDevice(physicalDevice, &createInfo, nullptr, &device);// != VK_SUCCESS) throw std::runtime_error("failed to create logical device!");
+    vkCreateDevice(physicalDevice, &createInfo, nullptr, &device);
 
     vkGetDeviceQueue(device, indices.graphicsFamily.value(), 0, &graphicsQueue);
     vkGetDeviceQueue(device, indices.presentFamily.value(), 0, &presentQueue);

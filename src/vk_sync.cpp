@@ -1,5 +1,4 @@
 #include "vk_sync.hpp"
-//#include <stdexcept>
 
 void SyncManager::createSyncObjects(VkDevice &device, const int MAX_FRAMES_IN_FLIGHT)
 {
@@ -16,14 +15,8 @@ void SyncManager::createSyncObjects(VkDevice &device, const int MAX_FRAMES_IN_FL
 
     for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++)
     {
-        //if
-        //(
-            vkCreateSemaphore(device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]);// != VK_SUCCESS ||
-            vkCreateSemaphore(device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]);// != VK_SUCCESS ||
-            vkCreateFence(device, &fenceInfo, nullptr, &inFlightFences[i]);// != VK_SUCCESS
-        //)
-        //{
-        //    throw std::runtime_error("failed to create synchronization objects for a frame!");
-        //}
+        vkCreateSemaphore(device, &semaphoreInfo, nullptr, &imageAvailableSemaphores[i]);
+        vkCreateSemaphore(device, &semaphoreInfo, nullptr, &renderFinishedSemaphores[i]);
+        vkCreateFence(device, &fenceInfo, nullptr, &inFlightFences[i]);
     }
 }
