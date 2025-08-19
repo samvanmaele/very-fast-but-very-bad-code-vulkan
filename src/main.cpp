@@ -18,6 +18,7 @@ bool USE_IGPU = false;
 #include <vector>
 #include <cstdint>
 #include <atomic>
+#include <iostream>
 
 #include "common_structs.hpp"
 #include "vk_device.hpp"
@@ -47,7 +48,7 @@ class Triangle
         void initWindow()
         {
             SDL_Init(SDL_INIT_VIDEO);
-            window = SDL_CreateWindow("...", WIDTH, HEIGHT, SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE);
+            window = SDL_CreateWindow("...", WIDTH, HEIGHT, SDL_WINDOW_VULKAN);
         }
 
         bool initVulkan()
@@ -137,7 +138,7 @@ class Triangle
             {
                 #ifdef _WIN32
                     HANDLE hThread = GetCurrentThread();
-                    SetThreadAffinityMask(hThread, 1 << 2);
+                    SetThreadAffinityMask(hThread, 1 << 1);
                     SetThreadPriority(hThread, THREAD_PRIORITY_HIGHEST);
                 #elif __linux__
                     cpu_set_t cpuset;
@@ -193,7 +194,7 @@ class Triangle
                     //VkFence &fence = syncManager.inFlightFences[currentFrame];
                     //vkWaitForFences(deviceManager.device, 1, &fence, VK_TRUE, UINT64_MAX);
 
-                    vkAcquireNextImageKHR(deviceManager.device, frameManager.swapChain, UINT64_MAX, syncManager.imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &imageIndex);
+                    VkResult result = vkAcquireNextImageKHR(deviceManager.device, frameManager.swapChain, UINT64_MAX, syncManager.imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &imageIndex);
 
                     //vkResetFences(deviceManager.device, 1, &fence);
 
@@ -206,7 +207,7 @@ class Triangle
                     presentInfo.pWaitSemaphores = signalSemaphores;
                     presentInfo.pImageIndices = &imageIndex;
 
-                    vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo);
+                    result = vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo);
 
                     currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
                     frameCount++;

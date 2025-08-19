@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 
 const int MAX_FRAMES_IN_FLIGHT = 7;
-const int WIDTH = 200;
+const int WIDTH = 240;
 const int HEIGHT = 200;
 
 struct QueueFamilyIndices
