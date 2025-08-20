@@ -7,7 +7,7 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 
 | # | Name | FPS | OS | CPU | GPU | RAM |
 |---|------|-----|----|-----|-----|-----|
-| 1. | owobred | 57587 | NixOS | Ryzen 9 9950X | RX 9070 XT | 64GB DDR5 |
+| 1. | owobred | 69767 | NixOS | Ryzen 9 9950X | RX 9070 XT | 64GB DDR5 |
 | 2. | Quack | 55272 | NixOS | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C14 |
 | 3. | Iggly | 36036 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
 | 4. | superbox | 35600 | Mint | i7-12700K | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
