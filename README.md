@@ -24,10 +24,12 @@
 | 1. | Quack | 32024 | Tiny 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
 | 2. | Caibi | 29250 | Windows 10(19045.2965; AtlasOS 0.3.2) | i7-14700F | RTX 4060 |  |
 | 3. | iwbtvb | 22800 | Windows 11 | i9-12900KF | RTX 3090 |  |
-| 4. | Vanyilla | 13531 | Windows 11 | Ryzen 9 9950X | RTX 4090 |  |
-| 5. | Sam | 11000 | Windows ?? | Ryzen 9 5950X | RTX 3090 |  |
-| 6. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
-| 7. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
+| 4. | Fridge | 17118 | Windows 10 |  Ryzen 7 9700X |  RTX 3070 TI |  32GB DDR5 |
+| 5. | Vanyilla | 13531 | Windows 11 | Ryzen 9 9950X | RTX 4090 |  |
+| 6. | Sam | 11000 | Windows ?? | Ryzen 9 5950X | RTX 3090 |  |
+| 7. | owobred | 10032 | Windows 11 |  Ryzen 9 9950X |  RX 9070 XT |  2x32GB DDR5-6400 |
+| 8. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
+| 9. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
 
 # Leaderboard (MacOS)
 
