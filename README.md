@@ -7,20 +7,22 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 
 | # | Name | FPS | OS | CPU | GPU | RAM |
 |---|------|-----|----|-----|-----|-----|
-| 1. | Quack | 55272 | NixOS | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C14 |
-| 2. | Iggly | 36036 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
-| 3. | superbox | 35600 | Mint | i7-12700K | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
-| 4. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
-| 5. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
-| 6. | Shuni | 27158 | NixOS | Ryzen 9 7950X | AMD Raphael (integrated) |  |
-| 7. | konii | 26364 | NixOS | Ryzen 5 7600 | AMD Raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
-| 8. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
-| 9. | Sam | 18230 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
-| 10. | toast | 17000 | NixOS | Ryzen 9 5900x | RTX 5070 Ti |  |
-| 11. | Sqbika | 13768 | NixOS | Ryzen 5 3600 | RX 9060 XT |  |
-| 12. | Assist | 13037 | CachyOS | i3-8100U | UHD 620 |  |
-| 13. | unkomp | 9458 | Arch |  |  |  |
-| 14. | Quack | 672 | TizenOS | Quad core ARM cortex? (Samsung Smart Fridge) | Mali GPU | 2GB |
+| 1. | owobred | 57587 | NixOS | Ryzen 9 9950X | RX 9070 XT | 64GB DDR5 |
+| 2. | Quack | 55272 | NixOS | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C14 |
+| 3. | Iggly | 36036 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
+| 4. | superbox | 35600 | Mint | i7-12700K | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
+| 5. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
+| 6. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
+| 7. | Shuni | 27158 | NixOS | Ryzen 9 7950X | AMD Raphael (integrated) |  |
+| 8. | konii | 26364 | NixOS | Ryzen 5 7600 | AMD Raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
+| 9. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
+| 10. | Sam | 18230 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
+| 11. | toast | 17000 | NixOS | Ryzen 9 5900x | RTX 5070 Ti |  |
+| 12. | Sqbika | 13768 | NixOS | Ryzen 5 3600 | RX 9060 XT |  |
+| 13. | Sqbika | 13337 | NixOS | i7-9750H | GTX 1650M |  |
+| 14. | Assist | 13037 | CachyOS | i3-8100U | UHD 620 |  |
+| 15. | unkomp | 9458 | Arch |  |  |  |
+| 16. | Quack | 672 | TizenOS | Quad core ARM cortex? (Samsung Smart Fridge) | Mali GPU | 2GB |
 
 # Leaderboard (Windows)
 
