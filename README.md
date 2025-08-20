@@ -19,11 +19,11 @@
 
 | # | Name | FPS | OS | CPU | GPU | RAM |
 |---|------|-----|----|-----|-----|-----|
-| 1. | Quack | 21589 | Windows 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
-| 2. | Vanyilla | 13531 | Windows 11 | Ryzen 9 9950X | RTX 4090 |  |
-| 3. | Sam | 11000 | Windows ?? | Ryzen 9 5950X | RTX 3090 |  |
-| 4. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
-| 5. | Caibi | 0 | Windows ?? | i7-14700F | RTX 4060 |  |
+| 1. | Quack | 29908 | Tiny 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
+| 2. | Caibi | 28578 | Windows ?? | i7-14700F | RTX 4060 |  |
+| 3. | Vanyilla | 13531 | Windows 11 | Ryzen 9 9950X | RTX 4090 |  |
+| 4. | Sam | 11000 | Windows ?? | Ryzen 9 5950X | RTX 3090 |  |
+| 5. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
 | 6. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
 
 # Leaderboard (MacOS)
