@@ -1,5 +1,6 @@
 # INSTRUCTIONS
-You'll need: clang, gcc, vulkan-loader, vulkan-headers, glfw, sdl3, pkg-config, glm, lld
+
+You'll need: clang, gcc, vulkan-loader, vulkan-headers, glfw, sdl3, pkg-config, glm, lld. 
 modify makefile to point at your vulkan lib and sdl3 lib, you can choose either clang or gcc. then 'make run'
 
 # Leaderboard (Linux)
