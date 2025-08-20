@@ -12,14 +12,16 @@
 | 8. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
 | 9. | Sam | 18230 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
 | 10. | toast | 17000 | NixOS | Ryzen 9 5900x | RTX 5070 Ti |  |
-| 11. | Assist | 13037 | CachyOS | i3-8100U | UHD 620 |  |
-| 12. | unkomp | 9458 | Arch |  |  |  |
+| 11. | Sqbika | 13768 | NixOS | Ryzen 5 3600 | RX 9060 XT |  |
+| 12. | Assist | 13037 | CachyOS | i3-8100U | UHD 620 |  |
+| 13. | unkomp | 9458 | Arch |  |  |  |
+| 14. | Quack | 324 | TizenOS | Quad core ARM cortex? (Samsung Smart Fridge) | Mail GPU | 2GB |
 
 # Leaderboard (Windows)
 
 | # | Name | FPS | OS | CPU | GPU | RAM |
 |---|------|-----|----|-----|-----|-----|
-| 1. | Quack | 29908 | Tiny 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
+| 1. | Quack | 32024 | Tiny 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
 | 2. | Caibi | 29250 | Windows 10(19045.2965; AtlasOS 0.3.2) | i7-14700F | RTX 4060 |  |
 | 3. | iwbtvb | 22800 | Windows 11 | i9-12900KF | RTX 3090 |  |
 | 4. | Vanyilla | 13531 | Windows 11 | Ryzen 9 9950X | RTX 4090 |  |
