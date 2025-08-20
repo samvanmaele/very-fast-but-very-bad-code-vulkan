@@ -1,33 +1,34 @@
 # Leaderboard (Linux)
 
-| # | Name     | FPS    | OS            | CPU              | GPU                      | RAM                                |
-|---|----------|--------|---------------|------------------|--------------------------|------------------------------------|
-| 1.| Quack    |  52958 | Linux NixOS   | 13900 (ES Q0L4)  | RTX 4070 Super           | 4x16GB DDR4-3600C19 @ 3200MT/s C14 |
-| 2.| superbox |  35600 | Linux Mint    | 12700K           | RTX 4070 TI              | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
-| 3.| Semicolon|  31358 | Linux Arch    | 5950x            | RX 6800 XT               | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
-| 4.| Iggly    |  30573 | Linux CachyOs | Z1 Extreme       | AMD Phoenix              |
-| 5.| Shuni    |  27158 | Linux NixOS   | 7950X            | AMD Raphael (integrated) |
-| 6.| konii    |  23141 | Linux NixOS   | 7600X            | AMD raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
-| 7.| Prism    |  22809 | Custom        | HP Prime G2 RevD | (Graphing Calculator)    |
-| 8.| Iggly    |  18677 | Linux CachyOS | i7-1260p         | Xe Graphics (integrated) |
-| 9.| Sam      |  18153 | Linux CachyOs | 5950x            | RTX 3090                 |
-|10.| toast    |  17000 | Linux NixOS   | 5900x            | RTX 5070 TI              |
-|11.| Assist   |  13037 | Linux CachyOS | i3 8100U         | UHD 620                  |
-|12.| unkomp   |   9458 | Linux Arch
+| # | Name | FPS | OS | CPU | GPU | RAM |
+|---|------|-----|----|-----|-----|-----|
+| 1. | Quack | 55272 | NixOS | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C14 |
+| 2. | Iggly | 36036 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
+| 3. | superbox | 35600 | Mint | i7-12700K | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
+| 4. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
+| 5. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
+| 6. | Shuni | 27158 | NixOS | Ryzen 9 7950X | AMD Raphael (integrated) |  |
+| 7. | konii | 26364 | NixOS | Ryzen 5 7600 | AMD Raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
+| 8. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
+| 9. | Sam | 18230 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
+| 10. | toast | 17000 | NixOS | Ryzen 9 5900x | RTX 5070 Ti |  |
+| 11. | Assist | 13037 | CachyOS | i3-8100U | UHD 620 |  |
+| 12. | unkomp | 9458 | Arch |  |  |  |
 
 # Leaderboard (Windows)
 
-| # | Name     | FPS    | OS            | CPU              | GPU                      | RAM                                |
-|---|----------|--------|---------------|------------------|--------------------------|------------------------------------|
-| 1.| Quack    |  19838 | Windows 10    | 13900 (ES Q0L4)  | RTX 4070 Super           | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
-| 2.| Vanyilla | RETAKE | Windows 11    | 9950X            | RTX 4090                 |
-| 3.| Adesi    | RETAKE | Windows ??    | 5950X            | RTX 4080                 |
-| 4.| Sam      | RETAKE | Windows ??    | 5950X            | RTX 3090                 |
-| 5.| Caibi    | RETAKE | Windows ??    | 14700F           | RTX 4060                 |
-| 6.| Quack    | RETAKE | Windows 10    | TR 3990X 64 core | 2x TITAN V + K80 24GB    | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
+| # | Name | FPS | OS | CPU | GPU | RAM |
+|---|------|-----|----|-----|-----|-----|
+| 1. | Quack | 21589 | Windows 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
+| 2. | Vanyilla | 13531 | Windows 11 | Ryzen 9 9950X | RTX 4090 |  |
+| 3. | Sam | 11000 | Windows ?? | Ryzen 9 5950X | RTX 3090 |  |
+| 4. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
+| 5. | Caibi | 0 | Windows ?? | i7-14700F | RTX 4060 |  |
+| 6. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
 
 # Leaderboard (MacOS)
 
-| # | Name     | FPS    | OS            | CPU              | GPU                      |
-|---|----------|--------|---------------|------------------|--------------------------|
-| 1.| Vanyilla |  6034  | MacOS         | M4 Pro           | -                        |
+| # | Name | FPS | OS | CPU | GPU | RAM |
+|---|------|-----|----|-----|-----|-----|
+| 1. | Vanyilla | 6034 | MacOS | M4 Pro | - |  |
+
