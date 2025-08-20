@@ -1,4 +1,4 @@
-CXX = gcc
+CXX = clang++
 OUTPUT = output
 
 CXXFLAGS_COMMON = -O3 -std=c++23 -Wall -DNDEBUG -I./src -DSDL_MAIN_HANDLED -march=native -flto -fomit-frame-pointer -fno-rtti -fno-exceptions -ffast-math

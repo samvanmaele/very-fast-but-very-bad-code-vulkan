@@ -79,7 +79,7 @@ class Triangle
 
             #ifdef _WIN32
                 HANDLE hThread = GetCurrentThread();
-                SetThreadAffinityMask(hThread, 1 << 2);
+                SetThreadAffinityMask(hThread, 1 << 1);
                 SetThreadPriority(hThread, THREAD_PRIORITY_HIGHEST);
             #elif __linux__
                 cpu_set_t cpuset;
@@ -91,8 +91,8 @@ class Triangle
                 pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
 
                 sched_param sch_params;
-                sch_params.sched_priority = sched_get_priority_max(SCHED_BATCH);
-                pthread_setschedparam(thread, SCHED_BATCH, &sch_params);
+                sch_params.sched_priority = sched_get_priority_max(SCHED_RR);
+                pthread_setschedparam(thread, SCHED_RR, &sch_params);
             #endif
 
             Uint32 lastTime = SDL_GetTicks();
@@ -142,15 +142,15 @@ class Triangle
                 #elif __linux__
                     cpu_set_t cpuset;
                     CPU_ZERO(&cpuset);
-                    const int core_id = 2;
+                    const int core_id = 1;
                     CPU_SET(core_id, &cpuset);
 
                     const pthread_t thread = pthread_self();
                     pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
 
                     sched_param sch_params;
-                    sch_params.sched_priority = sched_get_priority_max(SCHED_BATCH);
-                    pthread_setschedparam(thread, SCHED_BATCH, &sch_params);
+                    sch_params.sched_priority = sched_get_priority_max(SCHED_RR);
+                    pthread_setschedparam(thread, SCHED_RR, &sch_params);
                 #endif
 
                 const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
