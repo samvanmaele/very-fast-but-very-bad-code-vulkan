@@ -15,7 +15,7 @@
 | 11. | Sqbika | 13768 | NixOS | Ryzen 5 3600 | RX 9060 XT |  |
 | 12. | Assist | 13037 | CachyOS | i3-8100U | UHD 620 |  |
 | 13. | unkomp | 9458 | Arch |  |  |  |
-| 14. | Quack | 324 | TizenOS | Quad core ARM cortex? (Samsung Smart Fridge) | Mail GPU | 2GB |
+| 14. | Quack | 672 | TizenOS | Quad core ARM cortex? (Samsung Smart Fridge) | Mali GPU | 2GB |
 
 # Leaderboard (Windows)
 
