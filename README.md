@@ -20,7 +20,7 @@
 | # | Name | FPS | OS | CPU | GPU | RAM |
 |---|------|-----|----|-----|-----|-----|
 | 1. | Quack | 29908 | Tiny 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
-| 2. | Caibi | 28578 | Windows ?? | i7-14700F | RTX 4060 |  |
+| 2. | Caibi | 29250 | Windows 10(19045.2965; AtlasOS 0.3.2) | i7-14700F | RTX 4060 |  |
 | 3. | iwbtvb | 22800 | Windows 11 | i9-12900KF | RTX 3090 |  |
 | 4. | Vanyilla | 13531 | Windows 11 | Ryzen 9 9950X | RTX 4090 |  |
 | 5. | Sam | 11000 | Windows ?? | Ryzen 9 5950X | RTX 3090 |  |
