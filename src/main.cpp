@@ -1,3 +1,5 @@
+#include <cstddef>
+#include <iostream>
 bool USE_IGPU = false;
 
 #ifdef _WIN32
@@ -85,7 +87,7 @@ class Triangle
             #elif __linux__
                 cpu_set_t cpuset;
                 CPU_ZERO(&cpuset);
-                const int core_id = 2;
+                const int core_id = 1;
                 CPU_SET(core_id, &cpuset);
 
                 const pthread_t thread = pthread_self();
@@ -96,17 +98,13 @@ class Triangle
                 pthread_setschedparam(thread, SCHED_RR, &sch_params);
             #endif
 
-            char titleBuffer[64];
-
             while (running)
             {
                 SDL_PumpEvents();
                 if (SDL_HasEvent(SDL_EVENT_QUIT)) running = false;
 
                 uint_fast64_t fps = frameCount - prevframeCount;
-
-                std::snprintf(titleBuffer, 64, "FPS: %lu", fps);
-                SDL_SetWindowTitle(window, titleBuffer);
+                std::cout << fps << "\n";
                 prevframeCount = frameCount;
 
                 SDL_Delay(1000u);
@@ -125,7 +123,7 @@ class Triangle
                 #elif __linux__
                     cpu_set_t cpuset;
                     CPU_ZERO(&cpuset);
-                    const int core_id = 1;
+                    const int core_id = 19;
                     CPU_SET(core_id, &cpuset);
 
                     const pthread_t thread = pthread_self();
@@ -137,16 +135,9 @@ class Triangle
                 #endif
 
                 const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
-                VkSemaphore signalSemaphores[1];
 
                 VkCommandBufferSubmitInfo cmdBufInfo{};
                 cmdBufInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO;
-                VkSemaphoreSubmitInfo waitInfo{};
-                waitInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_SUBMIT_INFO;
-                waitInfo.stageMask = VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT;
-                VkSemaphoreSubmitInfo signalInfo{};
-                signalInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_SUBMIT_INFO;
-                signalInfo.stageMask = VK_PIPELINE_STAGE_2_ALL_GRAPHICS_BIT;
 
                 uint32_t imageIndex;
                 uint32_t currentFrame = 0;
@@ -154,7 +145,8 @@ class Triangle
                 VkPresentInfoKHR presentInfo =
                 {
                     .sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
-                    .waitSemaphoreCount = 1,
+                    .waitSemaphoreCount = 0,
+                    .pWaitSemaphores = nullptr,
                     .swapchainCount = 1,
                     .pSwapchains = swapChains,
                     .pResults = nullptr
@@ -163,32 +155,22 @@ class Triangle
                 const VkSubmitInfo2 submitInfo
                 {
                     .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2,
-                    .waitSemaphoreInfoCount = 1,
-                    .pWaitSemaphoreInfos = &waitInfo,
+                    .waitSemaphoreInfoCount = 0,
+                    .pWaitSemaphoreInfos = nullptr,
                     .commandBufferInfoCount = 1,
                     .pCommandBufferInfos = &cmdBufInfo,
-                    .signalSemaphoreInfoCount = 1,
-                    .pSignalSemaphoreInfos = &signalInfo,
+                    .signalSemaphoreInfoCount = 0,
+                    .pSignalSemaphoreInfos = nullptr,
                 };
 
                 while (running)
                 {
-                    //VkFence &fence = syncManager.inFlightFences[currentFrame];
-                    //vkWaitForFences(deviceManager.device, 1, &fence, VK_TRUE, UINT64_MAX);
-
                     vkAcquireNextImageKHR(deviceManager.device, frameManager.swapChain, UINT64_MAX, syncManager.imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &imageIndex);
 
-                    //vkResetFences(deviceManager.device, 1, &fence);
-
                     cmdBufInfo.commandBuffer = commandManager.commandBuffers[imageIndex];
-                    waitInfo.semaphore = syncManager.imageAvailableSemaphores[currentFrame];
-                    signalInfo.semaphore = syncManager.renderFinishedSemaphores[currentFrame];
-                    vkQueueSubmit2(deviceManager.graphicsQueue, 1, &submitInfo, syncManager.inFlightFences[currentFrame]);
+                    vkQueueSubmit2(deviceManager.graphicsQueue, 1, &submitInfo, VK_NULL_HANDLE);
 
-                    signalSemaphores[0] = {syncManager.renderFinishedSemaphores[currentFrame]};
-                    presentInfo.pWaitSemaphores = signalSemaphores;
                     presentInfo.pImageIndices = &imageIndex;
-
                     vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo);
 
                     currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
