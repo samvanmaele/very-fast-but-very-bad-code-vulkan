@@ -11,12 +11,12 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 | 2. | Quack | 55272 | NixOS | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C14 |
 | 3. | Iggly | 36036 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
 | 4. | superbox | 35600 | Mint | i7-12700K | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
-| 5. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
-| 6. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
-| 7. | Shuni | 27158 | NixOS | Ryzen 9 7950X | AMD Raphael (integrated) |  |
-| 8. | konii | 26364 | NixOS | Ryzen 5 7600 | AMD Raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
-| 9. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
-| 10. | Sam | 18230 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
+| 5. | Sam | 32232 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
+| 6. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
+| 7. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
+| 8. | Shuni | 27158 | NixOS | Ryzen 9 7950X | AMD Raphael (integrated) |  |
+| 9. | konii | 26364 | NixOS | Ryzen 5 7600 | AMD Raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
+| 10. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
 | 11. | toast | 17000 | NixOS | Ryzen 9 5900x | RTX 5070 Ti |  |
 | 12. | Sqbika | 13768 | NixOS | Ryzen 5 3600 | RX 9060 XT |  |
 | 13. | Sqbika | 13337 | NixOS | i7-9750H | GTX 1650M |  |
@@ -29,8 +29,8 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 
 | # | Name | FPS | OS | CPU | GPU | RAM |
 |---|------|-----|----|-----|-----|-----|
-| 1. | caibi | 34447 | Windows 10(19044.3324; Tiny10-Modified) | i7-14700F | RTX 4060 | 2x16GB DDR5-6600 @ 6600MT/s C32 |
-| 2. | Quack | 51304 | Tiny 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
+| 1. | Quack | 51304 | Tiny 10 | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C16 |
+| 2. | caibi | 34447 | Windows 10(19044.3324; Tiny10-Modified) | i7-14700F | RTX 4060 | 2x16GB DDR5-6600 @ 6600MT/s C32 |
 | 3. | Caibi | 29250 | Windows 10(19045.2965; AtlasOS 0.3.2) | i7-14700F | RTX 4060 |  |
 | 4. | iwbtvb | 22800 | Windows 11 | i9-12900KF | RTX 3090 |  |
 | 5. | Fridge | 17118 | Windows 10 |  Ryzen 7 9700X |  RTX 3070 TI |  32GB DDR5 |
