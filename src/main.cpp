@@ -101,11 +101,7 @@ class Triangle
             while (running)
             {
                 SDL_PumpEvents();
-                SDL_Event event;
-                if (SDL_HasEvent(SDL_EVENT_QUIT))
-                {
-                    running = false;
-                }
+                if (SDL_HasEvent(SDL_EVENT_QUIT)) running = false;
 
                 uint_fast64_t fps = frameCount - prevframeCount;
 
