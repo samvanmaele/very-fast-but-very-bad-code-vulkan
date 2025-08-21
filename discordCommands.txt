@@ -1,0 +1,10 @@
+editor's access:
+!triangleadd<linux/windw/macos> name,score,os,cpu,gpu,ram
+!triangleupdate<linux/windw/macos> numberonlist,newscore
+
+admin's access:
+!trianglerem<linux/windw/macos> nuumberonlist
+!trianglepush
+
+everyone can access:
+!triangle<linux/windw/macos>
