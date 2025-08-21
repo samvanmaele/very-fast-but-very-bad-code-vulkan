@@ -70,7 +70,8 @@ class Triangle
         }
 
         std::atomic<bool> running = true;
-        std::atomic<uint64_t> frameCount = 0;
+        uint64_t frameCount = 0;
+        uint64_t prevframeCount = 0;
         std::thread renderThread;
 
         void mainLoop()
@@ -95,11 +96,7 @@ class Triangle
                 pthread_setschedparam(thread, SCHED_RR, &sch_params);
             #endif
 
-            Uint32 lastTime = SDL_GetTicks();
             char titleBuffer[64];
-
-            const int targetFPS = 20;
-            const int frameDelay = 1000 / targetFPS;
 
             while (running)
             {
@@ -114,19 +111,13 @@ class Triangle
                     }
                 }
 
-                Uint32 currentTime = SDL_GetTicks();
-                Uint32 frametime = currentTime - lastTime;
+                uint_fast16_t fps = frameCount - prevframeCount;
 
-                if (frametime >= 1000)
-                {
-                    float fps = 1000.0f * (float)frameCount / (float)frametime;
+                std::snprintf(titleBuffer, 64, "FPS: %u", fps);
+                SDL_SetWindowTitle(window, titleBuffer);
+                prevframeCount = frameCount;
 
-                    std::snprintf(titleBuffer, 64, "FPS: %f", fps);
-                    SDL_SetWindowTitle(window, titleBuffer);
-                    lastTime = currentTime;
-                    frameCount = 0u;
-                }
-                SDL_Delay(frameDelay);
+                SDL_Delay(1000u);
             }
 
             renderThread.join();
