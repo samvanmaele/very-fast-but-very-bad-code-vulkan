@@ -29,7 +29,7 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 
 | # | Name | FPS | OS | CPU | GPU | RAM |
 |---|------|-----|----|-----|-----|-----|
-| 1. | Quack | 51304 | Tiny 10 | i9-13900 (ES Q0L4) 7.6GHz overclock | RTX 4070 Super | 2x8GB DDR4-4000C16 @ 4933MT/s C11 |
+| 1. | Quack | 51304 | Tiny 10 | i9-13900 (ES Q0L4) 7.6GHz OC unlocked | RTX 4070 Super | 2x8GB DDR4-4000C16 @ 4933MT/s C11 |
 | 2. | caibi | 34447 | Windows 10(19044.3324; Tiny10-Modified) | i7-14700F | RTX 4060 | 2x16GB DDR5-6600 @ 6600MT/s C32 |
 | 3. | Caibi | 29250 | Windows 10(19045.2965; AtlasOS 0.3.2) | i7-14700F | RTX 4060 |  |
 | 4. | iwbtvb | 22800 | Windows 11 | i9-12900KF | RTX 3090 |  |
