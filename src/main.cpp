@@ -100,20 +100,16 @@ class Triangle
 
             while (running)
             {
+                SDL_PumpEvents();
                 SDL_Event event;
-                while (SDL_PollEvent(&event))
+                if (SDL_HasEvent(SDL_EVENT_QUIT))
                 {
-                    switch (event.type)
-                    {
-                        case SDL_EVENT_QUIT:
-                            running = false;
-                            break;
-                    }
+                    running = false;
                 }
 
-                uint_fast16_t fps = frameCount - prevframeCount;
+                uint_fast64_t fps = frameCount - prevframeCount;
 
-                std::snprintf(titleBuffer, 64, "FPS: %u", fps);
+                std::snprintf(titleBuffer, 64, "FPS: %lu", fps);
                 SDL_SetWindowTitle(window, titleBuffer);
                 prevframeCount = frameCount;
 
