@@ -15,8 +15,8 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 | 6. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
 | 7. | Shuni | 27158 | NixOS | Ryzen 9 7950X | AMD Raphael (integrated) |  |
 | 8. | konii | 26364 | NixOS | Ryzen 5 7600 | AMD Raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
-| 9. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
-| 10. | Sam | 18230 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
+| 9. | Sam | 24044 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
+| 10. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
 | 11. | toast | 17000 | NixOS | Ryzen 9 5900x | RTX 5070 Ti |  |
 | 12. | Sqbika | 13768 | NixOS | Ryzen 5 3600 | RX 9060 XT |  |
 | 13. | Sqbika | 13337 | NixOS | i7-9750H | GTX 1650M |  |
