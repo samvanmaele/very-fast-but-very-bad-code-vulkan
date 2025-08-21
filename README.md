@@ -7,8 +7,8 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 
 | # | Name | FPS | OS | CPU | GPU | RAM |
 |---|------|-----|----|-----|-----|-----|
-| 1. | owobred | 70854 | NixOS | Ryzen 9 9950X | RX 9070 XT | 64GB DDR5 |
-| 2. | Quack | 55272 | NixOS | i9-13900 (ES Q0L4) | RTX 4070 Super | 4x16GB DDR4-3600C19 @ 3200MT/s C14 |
+| 1. | Quack | 102748 | NixOS | i9-13900 (ES Q0L4) 7.6GHz OC unlocked | RTX 4070 Super | 2x8GB DDR4-4000C16 @ 5366MT/s C11 |
+| 2. | owobred | 70854 | NixOS | Ryzen 9 9950X | RX 9070 XT | 64GB DDR5 |
 | 3. | Iggly | 36036 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
 | 4. | superbox | 35600 | Mint | i7-12700K | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
 | 5. | Sam | 32232 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
@@ -38,8 +38,9 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 | 7. | Sam | 11000 | Windows ?? | Ryzen 9 5950X | RTX 3090 |  |
 | 8. | caibi | 10243 | Windows 11(26100.4946; Home Edition) | i5-11300H | Intel Iris Xe | 2x8GB SODIMM_DDR4-3200 @ 3200MT/s C20 |
 | 9. | owobred | 10032 | Windows 11 |  Ryzen 9 9950X |  RX 9070 XT |  2x32GB DDR5-6400 |
-| 10. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
-| 11. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
+| 10. | Superbox | 5700 | Windows10 debloated | i5-8265U | UHD Graphics 620 |  |
+| 11. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
+| 12. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
 
 # Leaderboard (MacOS)
 
