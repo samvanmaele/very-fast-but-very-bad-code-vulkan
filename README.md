@@ -38,11 +38,13 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 | 7. | Sam | 11000 | Windows ?? | Ryzen 9 5950X | RTX 3090 |  |
 | 8. | caibi | 10243 | Windows 11(26100.4946; Home Edition) | i5-11300H | Intel Iris Xe | 2x8GB SODIMM_DDR4-3200 @ 3200MT/s C20 |
 | 9. | owobred | 10032 | Windows 11 |  Ryzen 9 9950X |  RX 9070 XT |  2x32GB DDR5-6400 |
-| 10. | Toman | 8488 | Windows 11 |  Ryzen 9 5900X |  RTX 3090 |  128GB DDR4-3200 |
-| 11. | Superbox | 5700 | Windows10 debloated | i5-8265U | UHD Graphics 620 |  |
-| 12. | Rena | 5355 | Windows 11 |  Ryzen 7 9800X3D |  RX 9070 XT |  32GB DDR5-6000 |
-| 13. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
-| 14. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
+| 10. | Gerfantry | 9181 | Windows 11 | Ryzen 7 5800X | RTX 3080 |  |
+| 11. | Toman | 8488 | Windows 11 |  Ryzen 9 5900X |  RTX 3090 |  128GB DDR4-3200 |
+| 12. | NihiloFixy | 7193 | Windows 11 | Ryzen 5 5500 | GTX 750 TI |  |
+| 13. | Superbox | 5700 | Windows10 debloated | i5-8265U | UHD Graphics 620 |  |
+| 14. | Rena | 5355 | Windows 11 |  Ryzen 7 9800X3D |  RX 9070 XT |  32GB DDR5-6000 |
+| 15. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
+| 16. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
 
 # Leaderboard (MacOS)
 
