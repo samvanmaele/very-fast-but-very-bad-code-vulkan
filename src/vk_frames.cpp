@@ -25,7 +25,7 @@ void FrameManager::createSwapChain(VkDevice &device, SDL_Window* window, VkSurfa
     swapChainImageFormat = surfaceFormat.format;
     swapChainExtent = extent;
 
-    uint32_t imageCount = std::max(swapChainSupport.capabilities.minImageCount, (uint32_t)MAX_FRAMES_IN_FLIGHT) + 1;
+    uint32_t imageCount = std::max(swapChainSupport.capabilities.minImageCount, (uint32_t)MAX_FRAMES_IN_FLIGHT);
     if (swapChainSupport.capabilities.maxImageCount > 0 && imageCount > swapChainSupport.capabilities.maxImageCount) imageCount = swapChainSupport.capabilities.maxImageCount;
 
     uint32_t queueFamilyIndices[] = {indices.graphicsFamily.value(), indices.presentFamily.value()};
