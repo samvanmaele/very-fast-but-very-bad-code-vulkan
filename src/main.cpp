@@ -136,30 +136,35 @@ class Triangle
 
                 const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
 
-                VkCommandBufferSubmitInfo cmdBufInfo;
-                cmdBufInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO;
-                cmdBufInfo.commandBuffer = commandManager.commandBuffers[0];
+                const VkCommandBufferSubmitInfo cmdBufInfo =
+                {
+                    .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO,
+                    .commandBuffer = commandManager.commandBuffers[0],
+                };
 
-                VkSubmitInfo2 submitInfo;
-                submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2;
-                submitInfo.waitSemaphoreInfoCount = 0;
-                submitInfo.pWaitSemaphoreInfos = nullptr;
-                submitInfo.commandBufferInfoCount = 1;
-                submitInfo.pCommandBufferInfos = &cmdBufInfo;
-                submitInfo.signalSemaphoreInfoCount = 0;
-                submitInfo.pSignalSemaphoreInfos = nullptr;
+                const VkSubmitInfo2 submitInfo =
+                {
+                    .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2,
+                    .waitSemaphoreInfoCount = 0,
+                    .pWaitSemaphoreInfos = nullptr,
+                    .commandBufferInfoCount = 1,
+                    .pCommandBufferInfos = &cmdBufInfo,
+                    .signalSemaphoreInfoCount = 0,
+                    .pSignalSemaphoreInfos = nullptr,
+                };
 
-                std::vector<uint32_t> imageIndices(1);
-                imageIndices[0] = 0;
+                const std::vector<uint32_t> imageIndices = {0};
 
-                VkPresentInfoKHR presentInfo;
-                presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
-                presentInfo.waitSemaphoreCount = 0;
-                presentInfo.pWaitSemaphores = nullptr;
-                presentInfo.swapchainCount = 1;
-                presentInfo.pSwapchains = swapChains;
-                presentInfo.pImageIndices = &imageIndices[0];
-                presentInfo.pResults = nullptr;
+                const VkPresentInfoKHR presentInfo =
+                {
+                    .sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
+                    .waitSemaphoreCount = 0,
+                    .pWaitSemaphores = nullptr,
+                    .swapchainCount = 1,
+                    .pSwapchains = swapChains,
+                    .pImageIndices = &imageIndices[0],
+                    .pResults = nullptr,
+                };
 
                 while (running)
                 {
