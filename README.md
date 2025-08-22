@@ -9,7 +9,7 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 |---|------|-----|----|-----|-----|-----|
 | 1. | Quack | 102748 | NixOS | i9-13900 (ES Q0L4) 7.6GHz OC unlocked | RTX 4070 Super | 2x8GB DDR4-4000C16 @ 5366MT/s C11 |
 | 2. | owobred | 70854 | NixOS | Ryzen 9 9950X | RX 9070 XT | 64GB DDR5 |
-| 3. | Sam | 46945 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
+| 3. | Sam | 41784 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
 | 4. | Iggly | 36036 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
 | 5. | superbox | 35600 | Mint | i7-12700K | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
 | 6. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
@@ -40,11 +40,12 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 | 9. | owobred | 10032 | Windows 11 |  Ryzen 9 9950X |  RX 9070 XT |  2x32GB DDR5-6400 |
 | 10. | Gerfantry | 9181 | Windows 11 | Ryzen 7 5800X | RTX 3080 |  |
 | 11. | Toman | 8488 | Windows 11 |  Ryzen 9 5900X |  RTX 3090 |  128GB DDR4-3200 |
-| 12. | NihiloFixy | 7193 | Windows 11 | Ryzen 5 5500 | GTX 750 TI |  |
-| 13. | Superbox | 5700 | Windows10 debloated | i5-8265U | UHD Graphics 620 |  |
-| 14. | Rena | 5355 | Windows 11 |  Ryzen 7 9800X3D |  RX 9070 XT |  32GB DDR5-6000 |
-| 15. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
-| 16. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
+| 12. | Cloudburst | 7881 | Tiny 11 | Ryzen 7 5800XT | RTX 3060 | 2x16GB DDR4 2933MT/s |
+| 13. | NihiloFixy | 7193 | Windows 11 | Ryzen 5 5500 | GTX 750 TI |  |
+| 14. | Superbox | 5700 | Windows10 debloated | i5-8265U | UHD Graphics 620 |  |
+| 15. | Rena | 5355 | Windows 11 |  Ryzen 7 9800X3D |  RX 9070 XT |  32GB DDR5-6000 |
+| 16. | Adesi | 0 | Windows ?? | Ryzen 9 5950X | RTX 4080 |  |
+| 17. | Quack | 0 | Windows 10 | Threadripper 3990X 64C | TITAN V | 8x32GB DDR4-3200C16 @ 3200MT/s C16 |
 
 # Leaderboard (MacOS)
 
