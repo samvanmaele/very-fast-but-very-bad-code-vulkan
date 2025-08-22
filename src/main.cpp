@@ -135,45 +135,36 @@ class Triangle
                 #endif
 
                 const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
-                const int swapchainSize = 65;
 
-                std::vector<VkCommandBufferSubmitInfo> cmdBufInfo(swapchainSize);
-                std::vector<VkSubmitInfo2> submitInfo(swapchainSize);
-                std::vector<VkPresentInfoKHR> presentInfo(swapchainSize);
-                std::vector<uint32_t> imageIndices(swapchainSize);
+                VkCommandBufferSubmitInfo cmdBufInfo;
+                cmdBufInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO;
+                cmdBufInfo.commandBuffer = commandManager.commandBuffers[0];
 
-                for (size_t i = 0; i < swapchainSize; i++)
-                {
-                    cmdBufInfo[i].sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO;
-                    cmdBufInfo[i].commandBuffer = commandManager.commandBuffers[i];
+                VkSubmitInfo2 submitInfo;
+                submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2;
+                submitInfo.waitSemaphoreInfoCount = 0;
+                submitInfo.pWaitSemaphoreInfos = nullptr;
+                submitInfo.commandBufferInfoCount = 1;
+                submitInfo.pCommandBufferInfos = &cmdBufInfo;
+                submitInfo.signalSemaphoreInfoCount = 0;
+                submitInfo.pSignalSemaphoreInfos = nullptr;
 
-                    submitInfo[i].sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2;
-                    submitInfo[i].waitSemaphoreInfoCount = 0;
-                    submitInfo[i].pWaitSemaphoreInfos = nullptr;
-                    submitInfo[i].commandBufferInfoCount = 1;
-                    submitInfo[i].pCommandBufferInfos = &cmdBufInfo[i];
-                    submitInfo[i].signalSemaphoreInfoCount = 0;
-                    submitInfo[i].pSignalSemaphoreInfos = nullptr;
+                std::vector<uint32_t> imageIndices(1);
+                imageIndices[0] = 0;
 
-                    presentInfo[i].sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
-                    presentInfo[i].waitSemaphoreCount = 0;
-                    presentInfo[i].pWaitSemaphores = nullptr;
-                    presentInfo[i].swapchainCount = 1;
-                    presentInfo[i].pSwapchains = swapChains;
-                    imageIndices[i] = i;
-                    presentInfo[i].pImageIndices = &imageIndices[i];
-                    presentInfo[i].pResults = nullptr;
-                }
-
-                uint32_t imageIndex;
-                uint32_t currentFrame = 0;
+                VkPresentInfoKHR presentInfo;
+                presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+                presentInfo.waitSemaphoreCount = 0;
+                presentInfo.pWaitSemaphores = nullptr;
+                presentInfo.swapchainCount = 1;
+                presentInfo.pSwapchains = swapChains;
+                presentInfo.pImageIndices = &imageIndices[0];
+                presentInfo.pResults = nullptr;
 
                 while (running)
                 {
-                    vkQueueSubmit2(deviceManager.graphicsQueue, 1, &submitInfo[currentFrame], VK_NULL_HANDLE);
-                    vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo[currentFrame]);
-
-                    currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+                    vkQueueSubmit2(deviceManager.graphicsQueue, 1, &submitInfo, VK_NULL_HANDLE);
+                    vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo);
                     frameCount++;
                 }
             });
