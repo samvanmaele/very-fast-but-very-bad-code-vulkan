@@ -4,9 +4,9 @@
 #include <vector>
 #include <glm/glm.hpp>
 
-const int MAX_FRAMES_IN_FLIGHT = 64;
-const int WIDTH = 7;
-const int HEIGHT = 6;
+const int MAX_FRAMES_IN_FLIGHT = 48;
+const int WIDTH = 6;
+const int HEIGHT = 7;
 
 struct QueueFamilyIndices
 {

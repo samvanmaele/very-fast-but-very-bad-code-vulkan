@@ -135,7 +135,7 @@ class Triangle
                 #endif
 
                 const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
-                const int swapchainSize = 65;
+                const int swapchainSize = MAX_FRAMES_IN_FLIGHT + 1;
 
                 std::vector<VkCommandBufferSubmitInfo> cmdBufInfo(swapchainSize);
                 std::vector<VkSubmitInfo2> submitInfo(swapchainSize);
