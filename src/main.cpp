@@ -1,6 +1,8 @@
+// LP_NUM_THREADS=1 make run -j ARGS="--use-llvmpipe"
+
 #include <cstddef>
 #include <iostream>
-bool USE_IGPU = false;
+int USE_GPU = 0;
 
 #ifdef _WIN32
     #define WIN32_LEAN_AND_MEAN
@@ -60,7 +62,7 @@ class Triangle
 
             volkLoadInstance(deviceManager.instance);
 
-            deviceManager.checkPhysicalDevice(USE_IGPU);
+            deviceManager.checkPhysicalDevice(USE_GPU);
             deviceManager.createLogicalDevice(deviceManager.indices);
 
             SwapChainSupportDetails swapChainSupport = deviceManager.querySwapChainSupport(deviceManager.physicalDevice);
@@ -134,7 +136,23 @@ class Triangle
                     pthread_setschedparam(thread, SCHED_RR, &sch_params);
                 #endif
 
+                const VkCommandBufferSubmitInfo cmdBufInfo =
+                {
+                    .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO,
+                    .commandBuffer = commandManager.commandBuffers[0],
+                };
+                const VkSubmitInfo2 submitInfo =
+                {
+                    .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2,
+                    .waitSemaphoreInfoCount = 0,
+                    .pWaitSemaphoreInfos = nullptr,
+                    .commandBufferInfoCount = 1,
+                    .pCommandBufferInfos = &cmdBufInfo,
+                    .signalSemaphoreInfoCount = 0,
+                    .pSignalSemaphoreInfos = nullptr,
+                };
                 const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
+
                 const int swapchainSize = MAX_FRAMES_IN_FLIGHT + 1;
 
                 std::vector<VkCommandBufferSubmitInfo> cmdBufInfo(swapchainSize);
@@ -143,30 +161,16 @@ class Triangle
                 std::vector<uint32_t> imageIndices(swapchainSize);
 
                 for (size_t i = 0; i < swapchainSize; i++)
+
                 {
-                    cmdBufInfo[i].sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO;
-                    cmdBufInfo[i].commandBuffer = commandManager.commandBuffers[i];
-
-                    submitInfo[i].sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2;
-                    submitInfo[i].waitSemaphoreInfoCount = 0;
-                    submitInfo[i].pWaitSemaphoreInfos = nullptr;
-                    submitInfo[i].commandBufferInfoCount = 1;
-                    submitInfo[i].pCommandBufferInfos = &cmdBufInfo[i];
-                    submitInfo[i].signalSemaphoreInfoCount = 0;
-                    submitInfo[i].pSignalSemaphoreInfos = nullptr;
-
-                    presentInfo[i].sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
-                    presentInfo[i].waitSemaphoreCount = 0;
-                    presentInfo[i].pWaitSemaphores = nullptr;
-                    presentInfo[i].swapchainCount = 1;
-                    presentInfo[i].pSwapchains = swapChains;
-                    imageIndices[i] = i;
-                    presentInfo[i].pImageIndices = &imageIndices[i];
-                    presentInfo[i].pResults = nullptr;
-                }
-
-                uint32_t imageIndex;
-                uint32_t currentFrame = 0;
+                    .sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
+                    .waitSemaphoreCount = 0,
+                    .pWaitSemaphores = nullptr,
+                    .swapchainCount = 1,
+                    .pSwapchains = swapChains,
+                    .pImageIndices = &imageIndices,
+                    .pResults = nullptr,
+                };
 
                 while (running)
                 {
@@ -213,11 +217,11 @@ int main(int argc, char* argv[])
         std::string arg = argv[i];
         if (arg == "--use-igpu")
         {
-            USE_IGPU = true;
+            USE_GPU = 1;
         }
-        else
+        else if (arg == "--use-llvmpipe")
         {
-            USE_IGPU = false;
+            USE_GPU = 2;
         }
     }
 

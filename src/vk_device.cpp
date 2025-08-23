@@ -45,7 +45,7 @@ std::vector<const char*> DeviceManager::getRequiredExtensions(SDL_Window* window
     return extensions;
 }
 
-bool DeviceManager::checkPhysicalDevice(bool USE_IGPU)
+bool DeviceManager::checkPhysicalDevice(int USE_IGPU)
 {
     uint32_t deviceCount = 0;
     vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
@@ -71,7 +71,7 @@ bool DeviceManager::checkPhysicalDevice(bool USE_IGPU)
     indices = findQueueFamilies(physicalDevice);
     return true;
 }
-int DeviceManager::rateDeviceSuitability(VkPhysicalDevice physicalDevice, bool USE_IGPU)
+int DeviceManager::rateDeviceSuitability(VkPhysicalDevice physicalDevice, int USE_IGPU)
 {
     int score = 0;
 
@@ -91,7 +91,12 @@ int DeviceManager::rateDeviceSuitability(VkPhysicalDevice physicalDevice, bool U
     VkPhysicalDeviceFeatures deviceFeatures;
     vkGetPhysicalDeviceFeatures(physicalDevice, &deviceFeatures);
 
-    if (USE_IGPU)
+    if (USE_IGPU == 2)
+    {
+        if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) return 0;
+        if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU) return 0;
+    }
+    else if (USE_IGPU == 1)
     {
         if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) return 0;
         if (deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU) score += 2000;
