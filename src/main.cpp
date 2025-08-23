@@ -170,11 +170,14 @@ class Triangle
 
                 while (running)
                 {
-                    vkQueueSubmit2(deviceManager.graphicsQueue, 1, &submitInfo[currentFrame], VK_NULL_HANDLE);
+                    vkQueueSubmit2(deviceManager.graphicsQueue, BATCHED_FRAMES, &submitInfo[currentFrame], VK_NULL_HANDLE);
+                    for (int i = 0; i < BATCHED_FRAMES-1; ++i) {
                     vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo[currentFrame]);
-
+                    currentFrame++;
+                    }
+                    vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo[currentFrame]);
                     currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
-                    frameCount++;
+                    frameCount+=BATCHED_FRAMES;
                 }
             });
         }
