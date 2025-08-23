@@ -1,6 +1,8 @@
+// LP_NUM_THREADS=1 make run -j ARGS="--use-llvmpipe"
+
 #include <cstddef>
 #include <iostream>
-bool USE_IGPU = false;
+int USE_GPU = 0;
 
 #ifdef _WIN32
     #define WIN32_LEAN_AND_MEAN
@@ -60,7 +62,7 @@ class Triangle
 
             volkLoadInstance(deviceManager.instance);
 
-            deviceManager.checkPhysicalDevice(USE_IGPU);
+            deviceManager.checkPhysicalDevice(USE_GPU);
             deviceManager.createLogicalDevice(deviceManager.indices);
 
             SwapChainSupportDetails swapChainSupport = deviceManager.querySwapChainSupport(deviceManager.physicalDevice);
@@ -134,14 +136,11 @@ class Triangle
                     pthread_setschedparam(thread, SCHED_RR, &sch_params);
                 #endif
 
-                const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
-
                 const VkCommandBufferSubmitInfo cmdBufInfo =
                 {
                     .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_SUBMIT_INFO,
                     .commandBuffer = commandManager.commandBuffers[0],
                 };
-
                 const VkSubmitInfo2 submitInfo =
                 {
                     .sType = VK_STRUCTURE_TYPE_SUBMIT_INFO_2,
@@ -152,9 +151,8 @@ class Triangle
                     .signalSemaphoreInfoCount = 0,
                     .pSignalSemaphoreInfos = nullptr,
                 };
-
-                const std::vector<uint32_t> imageIndices = {0};
-
+                const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
+                const uint32_t imageIndices = 0;
                 const VkPresentInfoKHR presentInfo =
                 {
                     .sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR,
@@ -162,7 +160,7 @@ class Triangle
                     .pWaitSemaphores = nullptr,
                     .swapchainCount = 1,
                     .pSwapchains = swapChains,
-                    .pImageIndices = &imageIndices[0],
+                    .pImageIndices = &imageIndices,
                     .pResults = nullptr,
                 };
 
@@ -206,11 +204,11 @@ int main(int argc, char* argv[])
         std::string arg = argv[i];
         if (arg == "--use-igpu")
         {
-            USE_IGPU = true;
+            USE_GPU = 1;
         }
-        else
+        else if (arg == "--use-llvmpipe")
         {
-            USE_IGPU = false;
+            USE_GPU = 2;
         }
     }
 
