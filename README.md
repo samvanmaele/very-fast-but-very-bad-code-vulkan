@@ -10,7 +10,7 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 | 1. | Quack | 102748 | NixOS | i9-13900 (ES Q0L4) 7.6GHz OC unlocked | RTX 4070 Super | 2x8GB DDR4-4000C16 @ 5366MT/s C11 |
 | 2. | owobred | 70854 | NixOS | Ryzen 9 9950X | RX 9070 XT | 64GB DDR5 |
 | 3. | Iggly | 47059 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
-| 4. | superbox | 43090 | Mint | i7-12700K | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C19 |
+| 4. | superbox | 43090 | Mint | i7-12700K 5.1GHz overclock | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C18 |
 | 5. | Sam | 41784 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
 | 6. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
 | 7. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
