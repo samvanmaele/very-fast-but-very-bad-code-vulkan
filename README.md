@@ -9,21 +9,22 @@ modify makefile to point at your vulkan lib and sdl3 lib, you can choose either 
 |---|------|-----|----|-----|-----|-----|
 | 1. | Quack | 102748 | NixOS | i9-13900 (ES Q0L4) 7.6GHz OC unlocked | RTX 4070 Super | 2x8GB DDR4-4000C16 @ 5366MT/s C11 |
 | 2. | owobred | 70854 | NixOS | Ryzen 9 9950X | RX 9070 XT | 64GB DDR5 |
-| 3. | Iggly | 47059 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
-| 4. | superbox | 43090 | Mint | i7-12700K 5.1GHz overclock | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C18 |
-| 5. | Sam | 41784 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
-| 6. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
-| 7. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
-| 8. | Shuni | 27158 | NixOS | Ryzen 9 7950X | AMD Raphael (integrated) |  |
-| 9. | konii | 26364 | NixOS | Ryzen 5 7600 | AMD Raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
-| 10. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
-| 11. | toast | 17000 | NixOS | Ryzen 9 5900x | RTX 5070 Ti |  |
-| 12. | Sqbika | 13768 | NixOS | Ryzen 5 3600 | RX 9060 XT |  |
-| 13. | Sqbika | 13337 | NixOS | i7-9750H | GTX 1650M |  |
-| 14. | Assist | 13037 | CachyOS | i3-8100U | UHD 620 |  |
-| 15. | unkomp | 9458 | Arch |  |  |  |
-| 16. | Quack | 672 | TizenOS | Quad core ARM cortex? (Samsung Smart Fridge) | Mali GPU | 2GB |
-| 17. | Elvyn | 0 | NixOS | Ryzen 9 7950X ES |  RTX 3080 |  2x32GB DDR5-6000 |
+| 3. | afunyun | 64150 | nobara.fc42 (6.16 kernel) |  AMD Ryzen 9 5900X 4.3ghz(locked) |  RTX 3080 10gb | 4x 16GB DDR4-3200 @ 3200 MT/s C16 |
+| 4. | Iggly | 47059 | NixOS | i7-1260P | Xe Graphics (integrated) |  |
+| 5. | superbox | 46494 | Mint | i7-12700K 5.1GHz overclock | RTX 4070 Ti | 2x32GB DDR4-3200C16 @ 3800MT/s C18 |
+| 6. | Sam | 41784 | CachyOS | Ryzen 9 5950x | RTX 3090 |  |
+| 7. | Semicolon | 32100 | Arch | Ryzen 9 5950x | RX 6800 XT | 4x16GB DDR4-3600C16 @ 3600MT/s C16 |
+| 8. | Iggly | 30573 | CachyOS | Z1 Extreme | AMD Phoenix |  |
+| 9. | Shuni | 27158 | NixOS | Ryzen 9 7950X | AMD Raphael (integrated) |  |
+| 10. | konii | 26364 | NixOS | Ryzen 5 7600 | AMD Raphael (integrated) | 2x16GB DDR5-5200C30 @ 6000MT/s C30 |
+| 11. | Prism | 22809 | Custom | HP Prime G2 RevD | (Graphing Calculator) |  |
+| 12. | toast | 17000 | NixOS | Ryzen 9 5900x | RTX 5070 Ti |  |
+| 13. | Sqbika | 13768 | NixOS | Ryzen 5 3600 | RX 9060 XT |  |
+| 14. | Sqbika | 13337 | NixOS | i7-9750H | GTX 1650M |  |
+| 15. | Assist | 13037 | CachyOS | i3-8100U | UHD 620 |  |
+| 16. | unkomp | 9458 | Arch |  |  |  |
+| 17. | Quack | 672 | TizenOS | Quad core ARM cortex? (Samsung Smart Fridge) | Mali GPU | 2GB |
+| 18. | Elvyn | 0 | NixOS | Ryzen 9 7950X ES |  RTX 3080 |  2x32GB DDR5-6000 |
 
 # Leaderboard (Windows)
 
