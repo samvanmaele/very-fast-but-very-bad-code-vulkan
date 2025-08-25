@@ -71,7 +71,7 @@ class Triangle
             return true;
         }
 
-        std::atomic<bool> running = true;
+        bool running = true;
         uint64_t frameCount = 0;
         uint64_t prevframeCount = 0;
         std::thread renderThread;
@@ -98,19 +98,20 @@ class Triangle
                 pthread_setschedparam(thread, SCHED_RR, &sch_params);
             #endif
 
-            while (running)
+            while (true)
             {
-                SDL_PumpEvents();
-                if (SDL_HasEvent(SDL_EVENT_QUIT)) running = false;
+                sdl_delay(1000u);
+                sdl_pumpevents();
+                if (sdl_hasevent(sdl_event_quit)) goto endloop_fps;
 
-                uint_fast64_t fps = frameCount - prevframeCount;
+                uint_fast64_t fps = framecount - prevframecount;
+                prevframecount = framecount;
                 std::cout << fps << "\n";
-                prevframeCount = frameCount;
 
-                SDL_Delay(1000u);
             }
-
-            renderThread.join();
+endloop_fps:
+            running = false;
+            renderthread.join();
         }
         void createRenderthread()
         {
@@ -135,7 +136,7 @@ class Triangle
                 #endif
 
                 const VkSwapchainKHR swapChains[] = {frameManager.swapChain};
-                const int swapchainSize = MAX_FRAMES_IN_FLIGHT + 1;
+                const int swapchainSize = MAX_FRAMES_IN_FLIGHT;
 
                 std::vector<VkCommandBufferSubmitInfo> cmdBufInfo(swapchainSize);
                 std::vector<VkSubmitInfo2> submitInfo(swapchainSize);
@@ -172,8 +173,8 @@ class Triangle
                 {
                     vkQueueSubmit2(deviceManager.graphicsQueue, BATCHED_FRAMES, &submitInfo[currentFrame], VK_NULL_HANDLE);
                     for (int i = 0; i < BATCHED_FRAMES-1; ++i) {
-                    vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo[currentFrame]);
-                    currentFrame++;
+                        vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo[currentFrame]);
+                        currentFrame++;
                     }
                     vkQueuePresentKHR(deviceManager.presentQueue, &presentInfo[currentFrame]);
                     currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
