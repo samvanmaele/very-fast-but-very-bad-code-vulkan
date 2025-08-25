@@ -100,18 +100,17 @@ class Triangle
 
             while (true)
             {
-                sdl_delay(1000u);
-                sdl_pumpevents();
-                if (sdl_hasevent(sdl_event_quit)) goto endloop_fps;
+                SDL_Delay(1000u);
+                SDL_PumpEvents();
+                if (SDL_HasEvent(SDL_EVENT_QUIT)) break;
 
-                uint_fast64_t fps = framecount - prevframecount;
-                prevframecount = framecount;
+                uint_fast64_t fps = frameCount - prevframeCount;
+                prevframeCount = frameCount;
                 std::cout << fps << "\n";
 
             }
-endloop_fps:
             running = false;
-            renderthread.join();
+            renderThread.join();
         }
         void createRenderthread()
         {
